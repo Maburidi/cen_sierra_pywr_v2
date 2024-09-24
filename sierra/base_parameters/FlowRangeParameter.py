@@ -1,5 +1,5 @@
-from cen_sierra_pywr.sierra.base_parameters import IFRParameter
-from cen_sierra_pywr.sierra.utilities.converter import convert
+from cen_sierra_pywr_new.sierra.base_parameters import IFRParameter
+from cen_sierra_pywr_new.sierra.utilities.converter import convert
 
 
 class FlowRangeParameter(IFRParameter):
