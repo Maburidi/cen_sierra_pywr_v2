@@ -33,6 +33,9 @@ class Hydropower(PiecewiseLink):
 
         max_flows = kwargs.pop('max_flows', [])
         costs = kwargs.pop('costs', [])
+        costs_ = kwargs.pop('cost', None)
+        max_flows_ = kwargs.pop('max_flow', None)
+             
 
         # Add an unconstrained block with a default cost of zero
         if len(max_flows) < len(costs):
@@ -42,7 +45,8 @@ class Hydropower(PiecewiseLink):
 
         kwargs['max_flows'] = max_flows
         kwargs['costs'] = costs
-        kwargs['nsteps'] = len(costs)
+        kwargs['nsteps'] = len(costs_)
+
 
         self.water_elevation_reservoir = kwargs.pop('water_elevation_reservoir', None)
         self.water_elevation_parameter = kwargs.pop('water_elevation_parameter', None)
