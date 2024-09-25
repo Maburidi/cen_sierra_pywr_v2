@@ -31,8 +31,8 @@ class Hydropower(PiecewiseLink):
         self.efficiency = kwargs.pop('efficiency', 0.9)  # Turbine efficiency
         self.tailwater_elevation = kwargs.pop('tailwater_elevation', 0.0)
 
-        max_flows = kwargs.pop('max_flows', [])
-        costs = kwargs.pop('costs', [])
+        max_flows = kwargs.pop('max_flow', [])
+        costs = kwargs.pop('cost', [])
 
         # Add an unconstrained block with a default cost of zero
         if len(max_flows) < len(costs):
