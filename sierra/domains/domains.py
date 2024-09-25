@@ -40,8 +40,8 @@ class Hydropower(PiecewiseLink):
         if len(costs) < len(max_flows):
             costs.append(0.0)  # PiecewiseLink will raise an error if not same length
 
-        kwargs['max_flow'] = max_flows
-        kwargs['cost'] = costs
+        kwargs['max_flows'] = max_flows
+        kwargs['costs'] = costs
 
         self.water_elevation_reservoir = kwargs.pop('water_elevation_reservoir', None)
         self.water_elevation_parameter = kwargs.pop('water_elevation_parameter', None)
