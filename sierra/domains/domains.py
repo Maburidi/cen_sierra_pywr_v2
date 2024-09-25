@@ -49,6 +49,11 @@ class Hydropower(PiecewiseLink):
         self.residual_flow = residual_flow
         self.residual_cost = residual_cost
 
+        print("==============hello=============")
+        print(**kwargs)
+        print("================================")
+
+
         super(Hydropower, self).__init__(model, **kwargs)
 
         # do this after super(...).__init__(...)
