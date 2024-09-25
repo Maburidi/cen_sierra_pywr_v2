@@ -42,6 +42,7 @@ class Hydropower(PiecewiseLink):
 
         kwargs['max_flows'] = max_flows
         kwargs['costs'] = costs
+        kwargs['nsteps'] = len(costs)
 
         self.water_elevation_reservoir = kwargs.pop('water_elevation_reservoir', None)
         self.water_elevation_parameter = kwargs.pop('water_elevation_parameter', None)
@@ -53,7 +54,7 @@ class Hydropower(PiecewiseLink):
             print(f"{key}: {value}")  # Print each key-value pair
         print("================================")
 
-        super().__init__(model, **kwargs)
+        super(Hydropower, self).__init__(model, **kwargs)
 
         # do this after super(...).__init__(...)
         self.output.max_flow = flow_capacity
