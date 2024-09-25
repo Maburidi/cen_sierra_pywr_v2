@@ -48,11 +48,10 @@ class Hydropower(PiecewiseLink):
         self.turbine_capacity = turbine_capacity
         self.residual_flow = residual_flow
         self.residual_cost = residual_cost
-
         print("==============hello=============")
-        print(**kwargs)
+        for key, value in kwargs.items():
+            print(f"{key}: {value}")  # Print each key-value pair
         print("================================")
-
 
         super().__init__(model, **kwargs)
 
