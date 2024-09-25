@@ -45,7 +45,7 @@ class Hydropower(PiecewiseLink):
 
         kwargs['max_flows'] = max_flows
         kwargs['costs'] = costs
-        kwargs['nsteps'] = len(costs_)
+        kwargs['nsteps'] = len(costs)
 
 
         self.water_elevation_reservoir = kwargs.pop('water_elevation_reservoir', None)
