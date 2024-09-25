@@ -54,7 +54,7 @@ class Hydropower(PiecewiseLink):
         print("================================")
 
 
-        super(Hydropower, self).__init__(model, **kwargs)
+        super().__init__(model, **kwargs)
 
         # do this after super(...).__init__(...)
         self.output.max_flow = flow_capacity
