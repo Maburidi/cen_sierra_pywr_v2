@@ -13,7 +13,7 @@ class CVP_Madera_Canal_Demand(BaseParameter):
         # if today <= (4, 1) or (11, 1) <= today:
         #     return 0
 
-        WYT = self.get('cen_sierra_pywr_new.sierra.parameters.San_Joaquin_Valley_WYT' + self.month_suffix, timestep, scenario_index)
+        WYT = self.get('San Joaquin Valley WYT' + self.month_suffix, timestep, scenario_index)
         demand_cfs = self.model.tables["CVP Madera Canal demand"][WYT]
 
         if self.model.mode == 'scheduling':
@@ -24,7 +24,7 @@ class CVP_Madera_Canal_Demand(BaseParameter):
 
         demand_cms = demand_cfs / 35.315
 
-        param_name = "Millerton_Lake_Flood_Release_Requirement" + self.month_suffix
+        param_name = "Millerton Lake Flood Release Requirement" + self.month_suffix
         flood_control_reqt_cms = self.model.parameters[param_name].value(timestep, scenario_index) / 0.0864
 
         demand_cms += flood_control_reqt_cms
