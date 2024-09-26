@@ -13,7 +13,7 @@ class CVP_Madera_Canal_Demand(BaseParameter):
         # if today <= (4, 1) or (11, 1) <= today:
         #     return 0
 
-        WYT = self.get('San_Joaquin_Valley_WYT' + self.month_suffix, timestep, scenario_index)
+        WYT = self.get('cen_sierra_pywr_new.sierra.parameters.San_Joaquin_Valley_WYT' + self.month_suffix, timestep, scenario_index)
         demand_cfs = self.model.tables["CVP Madera Canal demand"][WYT]
 
         if self.model.mode == 'scheduling':
