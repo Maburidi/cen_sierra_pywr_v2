@@ -102,34 +102,67 @@ class InstreamFlowRequirement(PiecewiseLink):
         """Initialise a new InstreamFlowRequirement instance
         Parameters
         to-be-complete
+
+
+
+        max_flows = kwargs.pop('max_flows', [])
+        costs = kwargs.pop('costs', [])
+        max_flows_ = kwargs.pop('max_flow', None)
+        costs_ = kwargs.pop('cost', None)
+             
+
+        # Add an unconstrained block with a default cost of zero
+        if len(max_flows) < len(costs):
+            max_flows.append(None)
+        if len(costs) < len(max_flows):
+            costs.append(0.0)  # PiecewiseLink will raise an error if not same length
+
+        kwargs['max_flows'] = max_flows
+        kwargs['costs'] = costs
+        kwargs['nsteps'] = len(costs)
+
         """
         # create keyword arguments for PiecewiseLink
-        kwargs['cost'] = kwargs.pop('cost', [0.0, 0.0, 0.0])
-        kwargs['max_flow'] = kwargs.pop('max_flow', [0.0, 0.0, 0.0])
-        kwargs['nsteps'] = len(kwargs['cost']) 
-
-        min_flow = kwargs.pop('min_flow', None)
+        
+        max_flows = kwargs.pop('max_flows', []) 
+        min_flows = kwargs.pop('min_flows', [])        
+        costs = kwargs.pop('costs', [])                
+        #max_flows_ = kwargs.pop('max_flow', None)      
+        #costs_ = kwargs.pop('cost', None)              
 
         
-        min_flow_cost = kwargs.pop('min_flow_cost', None)         
-        max_flow_cost = kwargs.pop('max_flow_cost', None)         
+        self.min_flow_cost = kwargs.pop('min_flow_cost', None)         
+        self.max_flow_cost = kwargs.pop('max_flow_cost', None)         
+
+        if len(max_flows) < len(costs):
+            max_flows.append(None)
+        if len(costs) < len(max_flows):
+            costs.append(0.0)          
+
+        kwargs['max_flows'] = max_flows
+        kwargs['min_flows'] = min_flows
+        kwargs['costs'] = costs
+        kwargs['nsteps'] = len(kwargs['cost']) 
         
         #kwargs['max_flow'].append(None)
-        try:
-            assert (len(kwargs['cost']) == len(kwargs['max_flow']))
-        except:
-            raise
+        #try:
+        #    assert (len(kwargs['costs']) == len(kwargs['max_flows']))
+        #except:
+        #    raise
 
         self.ifr_type = kwargs.pop('ifr_type', 'basic')
-
+        
         super(InstreamFlowRequirement, self).__init__(*args, **kwargs)
-
+        
     @classmethod
     def load(cls, data, model):
-        cost = data.pop("cost", 0.0)
-        min_flow = data.pop("min_flow", 0.0)
+        
+        cost = data.pop('costs', data.pop('cost', None))
+        
+        min_flow = data.pop('min_flows', data.pop('min_flow', None))
         min_flow_cost = data.pop("min_flow_cost", 0.0)
-        max_flow = data.pop("max_flow", 0.0)
+        
+        max_flow = data.pop('max_flows', data.pop('max_flow', None))        
         max_flow_cost = data.pop("max_flow_cost", 0.0)
 
         if type(max_flow) == list:
