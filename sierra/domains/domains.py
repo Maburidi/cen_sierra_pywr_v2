@@ -106,6 +106,7 @@ class InstreamFlowRequirement(PiecewiseLink):
         # create keyword arguments for PiecewiseLink
         kwargs['cost'] = kwargs.pop('cost', [0.0, 0.0, 0.0])
         kwargs['max_flow'] = kwargs.pop('max_flow', [0.0, 0.0, 0.0])
+        kwargs['nsteps'] = len(kwargs['cost'])
         #kwargs['max_flow'].append(None)
         try:
             assert (len(kwargs['cost']) == len(kwargs['max_flow']))
