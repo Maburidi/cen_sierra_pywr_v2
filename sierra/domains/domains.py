@@ -135,8 +135,8 @@ class InstreamFlowRequirement(PiecewiseLink):
         self.max_flow_cost = kwargs.pop('max_flow_cost', None)         
 
         if len(max_flows) < len(costs):
-            max_flows.append(None)
-        if len(costs) < len(max_flows):
+            self.max_flows.append(None)
+        if len(costs) < len(self.max_flows):
             costs.append(0.0)          
 
         #kwargs['max_flows'] = max_flows
