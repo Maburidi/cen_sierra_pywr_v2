@@ -106,7 +106,10 @@ class InstreamFlowRequirement(PiecewiseLink):
         # create keyword arguments for PiecewiseLink
         kwargs['cost'] = kwargs.pop('cost', [0.0, 0.0, 0.0])
         kwargs['max_flow'] = kwargs.pop('max_flow', [0.0, 0.0, 0.0])
-        kwargs['nsteps'] = len(kwargs['cost'])     
+        kwargs['nsteps'] = len(kwargs['cost']) 
+
+        min_flow = kwargs.pop('min_flow', [])
+
         
         min_flow_cost = kwargs.pop('min_flow_cost', None)         
         max_flow_cost = kwargs.pop('max_flow_cost', None)         
