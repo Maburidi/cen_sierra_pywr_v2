@@ -97,8 +97,9 @@ class Hydropower(PiecewiseLink):
 class InstreamFlowRequirement(PiecewiseLink):
     """An instream flow requirement node
     """
+    _type = 'InstreamFlowRequirement'
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, model, *args, **kwargs):
         """Initialise a new InstreamFlowRequirement instance
         Parameters
         to-be-complete
@@ -152,7 +153,7 @@ class InstreamFlowRequirement(PiecewiseLink):
 
         self.ifr_type = kwargs.pop('ifr_type', 'basic')
         
-        super(InstreamFlowRequirement, self).__init__(*args, **kwargs)
+        super().__init__(model, *args, **kwargs)
         
     @classmethod
     def load(cls, data, model):
