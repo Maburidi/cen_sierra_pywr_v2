@@ -134,7 +134,7 @@ class InstreamFlowRequirement(PiecewiseLink):
         #max_flows = kwargs.pop('max_flows', []) 
         max_flows = kwargs.pop('min_flows', [])        
         costs = kwargs.pop('costs', [])                
-        max_flows_ = kwargs.pop('min_flow', None)      
+        min_flows_ = kwargs.pop('min_flow', None)      
         costs_ = kwargs.pop('cost', None)              
 
         
