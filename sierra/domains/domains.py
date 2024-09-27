@@ -99,7 +99,7 @@ class InstreamFlowRequirement(PiecewiseLink):
     """
     _type = 'InstreamFlowRequirement'
 
-    def __init__(self, model, *args, **kwargs):
+    def __init__(self, model, **kwargs):
         """Initialise a new InstreamFlowRequirement instance
         Parameters
         to-be-complete
@@ -140,8 +140,8 @@ class InstreamFlowRequirement(PiecewiseLink):
         if len(costs) < len(self.max_flows):
             costs.append(0.0)          
 
-        #kwargs['max_flows'] = max_flows
-        #kwargs['min_flows'] = min_flows
+        kwargs['max_flows'] = self.max_flows    
+        kwargs['min_flows'] = self.min_flows    
         kwargs['costs'] = costs
         kwargs['nsteps'] = len(kwargs['costs']) 
         
@@ -153,7 +153,7 @@ class InstreamFlowRequirement(PiecewiseLink):
 
         self.ifr_type = kwargs.pop('ifr_type', 'basic')
         
-        super().__init__(model, *args, **kwargs)
+        super().__init__(model, **kwargs)
         
     @classmethod
     def load(cls, data, model):
