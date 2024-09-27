@@ -106,6 +106,7 @@ class InstreamFlowRequirement(PiecewiseLink):
 
 
 
+
         max_flows = kwargs.pop('max_flows', [])
         costs = kwargs.pop('costs', [])
         max_flows_ = kwargs.pop('max_flow', None)
@@ -122,11 +123,16 @@ class InstreamFlowRequirement(PiecewiseLink):
         kwargs['costs'] = costs
         kwargs['nsteps'] = len(costs)
 
+
+        self.water_elevation_reservoir = kwargs.pop('water_elevation_reservoir', None)
+        self.water_elevation_parameter = kwargs.pop('water_elevation_parameter', None)
+        self.turbine_capacity = turbine_capacity
+
         """
         # create keyword arguments for PiecewiseLink
         
-        self.max_flows = kwargs.pop('max_flows', []) 
-        self.min_flows = kwargs.pop('min_flows', [])        
+        max_flows = kwargs.pop('max_flows', []) 
+        min_flows = kwargs.pop('min_flows', [])        
         costs = kwargs.pop('costs', [])                
         #max_flows_ = kwargs.pop('max_flow', None)      
         #costs_ = kwargs.pop('cost', None)              
@@ -136,14 +142,14 @@ class InstreamFlowRequirement(PiecewiseLink):
         self.max_flow_cost = kwargs.pop('max_flow_cost', None)         
 
         if len(max_flows) < len(costs):
-            self.max_flows.append(None)
-        if len(costs) < len(self.max_flows):
+            max_flows.append(None)
+        if len(costs) < len(max_flows):
             costs.append(0.0)          
 
-        kwargs['max_flows'] = self.max_flows    
-        kwargs['min_flows'] = self.min_flows    
+        kwargs['max_flows'] = max_flows    
+        kwargs['min_flows'] = min_flows    
         kwargs['costs'] = costs
-        kwargs['nsteps'] = len(kwargs['costs']) 
+        kwargs['nsteps'] = len(costs) 
         
         #kwargs['max_flow'].append(None)
         #try:
