@@ -18,7 +18,7 @@ class HydropowerDemand(BaseParameter):
 
     def setup(self):
         super().setup()
-        self.price_threshold = np.zeros(self.num_scenarios, np.float)
+        self.price_threshold = np.zeros(self.num_scenarios, float)
 
     def _value(self, timestep, scenario_index):
 
