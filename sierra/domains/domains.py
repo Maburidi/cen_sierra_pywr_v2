@@ -1,8 +1,5 @@
-from pywr.nodes import Domain, PiecewiseLink, Storage
-from pywr.parameters import load_parameter, load_parameter_values
+from pywr.nodes import Domain, PiecewiseLink, Storage, Output, Input, Node
 from loguru import logger
-
-from pywr.nodes import Output, Input, Node
 
 from pywr.parameters import (
     pop_kwarg_parameter,
