@@ -123,7 +123,6 @@ class Hydropower(Node):
         self.residual_flow = residual_flow
         self.residual_cost = residual_cost    
 
-        self.output.max_flow = flow_capacity
     
         # TODO look at the application of Domains here. Having to use
         # Input/Output instead of BaseInput/BaseOutput because of a different
@@ -156,7 +155,9 @@ class Hydropower(Node):
         if costs is not None:
             self.costs = costs
         if max_flows is not None:
-            self.max_flows = max_flows                
+            self.max_flows = max_flows 
+        self.output.max_flow = flow_capacity
+
 
     def get_min_flow(self, si):
         return sum([sl.get_min_flow(si) for sl in self.sublinks])
