@@ -271,7 +271,7 @@ from pywr.parameters import (
 
 
 
-class InstreamFlowRequirement1(Node):
+class InstreamFlowRequirement(Node):
 
     __parameter_attributes__ = ("costs", "min_flows")
 
@@ -388,7 +388,7 @@ class InstreamFlowRequirement1(Node):
         for lnk in self.sublinks:
             self.commit_all(lnk.flow)
         # Make sure save is done after setting aggregated flow
-        super(InstreamFlowRequirement1, self).after(timestep)
+        super(InstreamFlowRequirement, self).after(timestep)
 
 
     @classmethod
