@@ -100,7 +100,7 @@ class Hydropower(PiecewiseLink):
 '''
 
 
-class Hydropower1(Node):
+class Hydropower(Node):
 
     __parameter_attributes__ = ("costs", "max_flows")
 
@@ -220,7 +220,7 @@ class Hydropower1(Node):
         for lnk in self.sublinks:
             self.commit_all(lnk.flow)
         # Make sure save is done after setting aggregated flow
-        super(Hydropower1, self).after(timestep)
+        super(Hydropower, self).after(timestep)
 
 
     @classmethod
