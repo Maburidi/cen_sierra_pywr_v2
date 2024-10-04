@@ -99,7 +99,8 @@ class Hydropower(PiecewiseLink):
         return node
 '''
 
-class Hydropower(Node):
+
+class Hydropower1(Node):
 
     __parameter_attributes__ = ("costs", "max_flows")
 
@@ -109,11 +110,7 @@ class Hydropower(Node):
         name = kwargs.pop("name")
         costs = kwargs.pop("costs", None)
         max_flows = kwargs.pop("max_flows", None)
-
-        print("test 2")
-        print(costs)
-        print('-------')
-        print(max_flows)
+             
 
         self.head = kwargs.pop('head', None)  # Fixed head
         self.efficiency = kwargs.pop('efficiency', 0.9)  # Turbine efficiency
@@ -156,9 +153,9 @@ class Hydropower(Node):
         if costs is not None:
             self.costs = costs
         if max_flows is not None:
-            self.max_flows = max_flows 
+            self.max_flows = max_flows                
+        
         self.output.max_flow = flow_capacity
-
 
     def get_min_flow(self, si):
         return sum([sl.get_min_flow(si) for sl in self.sublinks])
@@ -174,15 +171,16 @@ class Hydropower(Node):
             print("len(self.sublinks)", len(self.sublinks))
             print("len(values)", len(values))
             if len(self.sublinks) != len(values):
-                
                 raise ValueError(
                     f"Piecewise costs must be the same length as the number of "
                     f"sub-links ({len(self.sublinks)})."
                 )
             for i, sl in enumerate(self.sublinks):
-                print("values[i] ----------- layan1 ", values[i] )
-                sl.cost = values[i] 
-                print("sl.cost ======>", sl.cost)                        
+                print('---------')
+                print(values[i])
+
+                sl.cost = values[i]
+            print("-----Done Costs----")
 
         return locals()
 
@@ -199,7 +197,11 @@ class Hydropower(Node):
                     f"sub-links ({len(self.sublinks)})."
                 )
             for i, sl in enumerate(self.sublinks):
+                print('---------')
+                print(values[i])
+
                 sl.max_flow = values[i]
+            print("-----Done Max_flows----")
 
         return locals()
 
@@ -218,7 +220,7 @@ class Hydropower(Node):
         for lnk in self.sublinks:
             self.commit_all(lnk.flow)
         # Make sure save is done after setting aggregated flow
-        super(Hydropower, self).after(timestep)
+        super(Hydropower1, self).after(timestep)
 
 
     @classmethod
@@ -250,13 +252,6 @@ class Hydropower(Node):
             logger.error('{} {} failed to load'.format(param_type, data['name']))
             raise
         return node
-
-
-
-
-
-
-
 
 
 
