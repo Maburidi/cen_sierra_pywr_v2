@@ -111,6 +111,9 @@ class Hydropower(Node):
         max_flows = kwargs.pop("max_flows", None)
 
         print("test 2")
+        print(costs)
+        print('-------')
+        print(max_flows)
 
         self.head = kwargs.pop('head', None)  # Fixed head
         self.efficiency = kwargs.pop('efficiency', 0.9)  # Turbine efficiency
