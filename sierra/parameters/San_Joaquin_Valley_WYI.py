@@ -1,6 +1,9 @@
 from cen_sierra_pywr_new.sierra.base_parameters import BaseParameter
 
 
+
+
+
 class San_Joaquin_Valley_WYI(BaseParameter):
     """
     San Joaquin Valley Water Year Index = 0.6 * Current Apr-Jul Runoff Forecast (in maf)
@@ -17,9 +20,11 @@ class San_Joaquin_Valley_WYI(BaseParameter):
         sjvi = self.model.tables["San Joaquin Valley Index"]
         if 4 <= self.datetime.month <= 12:
             operational_water_year = self.datetime.year
+
         else:
             operational_water_year = self.datetime.year - 1
-        return sjvi[operational_water_year]
+
+        return sjvi.loc[operational_water_year, 'SJVI (maf)']
 
     def value(self, timestep, scenario_index):
         try:
@@ -34,4 +39,4 @@ class San_Joaquin_Valley_WYI(BaseParameter):
         return cls(model, **data)
 
 
-San_Joaquin_Valley_WYI.register()
+San_Joaquin_Valley_WYI.register() 
