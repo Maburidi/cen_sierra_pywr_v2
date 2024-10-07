@@ -102,7 +102,7 @@ class Hydropower(PiecewiseLink):
 
 class Hydropower(Node):
 
-    __parameter_attributes__ = ("costs", "max_flows")
+    __parameter_attributes__ = ("costs", "max_flows", "min_flows")
 
 
     def __init__(self, model,nsteps,turbine_capacity=None, flow_capacity=None, residual_flow=0.0, residual_cost=0.0, *args, **kwargs):
