@@ -1,5 +1,5 @@
-from sierra.base_parameters import MinFlowParameter
-from sierra.utilities.converter import convert
+from cen_sierra_pywr_new.sierra.base_parameters import MinFlowParameter
+from cen_sierra_pywr_new.sierra.utilities.converter import convert
 
 
 class IFR_bl_New_Exchequer_Dam_Min_Flow(MinFlowParameter):

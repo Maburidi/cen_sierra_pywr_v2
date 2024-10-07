@@ -1,6 +1,6 @@
-from sierra.base_parameters import BaseParameter
+from cen_sierra_pywr_new.sierra.base_parameters import BaseParameter
 from scipy import interpolate
-from sierra.utilities.converter import convert
+from cen_sierra_pywr_new.sierra.utilities.converter import convert
 
 
 class Exchequer_Dam_Flood_Release_Requirement(BaseParameter):
