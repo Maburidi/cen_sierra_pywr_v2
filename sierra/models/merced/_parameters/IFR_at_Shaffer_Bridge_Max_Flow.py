@@ -1,5 +1,5 @@
-from sierra.base_parameters import FlowRangeParameter
-from sierra.utilities.converter import convert
+from cen_sierra_pywr_new.sierra.base_parameters import FlowRangeParameter
+from cen_sierra_pywr_new.sierra.utilities.converter import convert
 
 
 class IFR_at_Shaffer_Bridge_Max_Flow(FlowRangeParameter):
