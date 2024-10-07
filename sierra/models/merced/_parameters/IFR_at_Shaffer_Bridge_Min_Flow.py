@@ -1,7 +1,7 @@
 from datetime import date
 import numpy as np
-from sierra.base_parameters import MinFlowParameter
-from sierra.utilities.converter import convert
+from cen_sierra_pywr_new.sierra.base_parameters import MinFlowParameter
+from cen_sierra_pywr_new.sierra.utilities.converter import convert
 
 
 class IFR_at_Shaffer_Bridge_Min_Flow(MinFlowParameter):
