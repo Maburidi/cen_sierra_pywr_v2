@@ -8,6 +8,9 @@ from pywr.parameters import (
     FlowDelayParameter,
 )
 
+
+
+
 class Reservoir(Storage):
     """
     Like a storage node, only better
@@ -102,7 +105,7 @@ class Hydropower(PiecewiseLink):
 
 class Hydropower(Node):
 
-    __parameter_attributes__ = ("costs", "max_flows")
+    __parameter_attributes__ = ("costs", "max_flows","flow_capacity")
 
 
     def __init__(self, model,nsteps,turbine_capacity=None, flow_capacity=None, residual_flow=0.0, residual_cost=0.0, *args, **kwargs):
@@ -256,24 +259,13 @@ class Hydropower(Node):
 
 
 
-from pywr.nodes import Output, Input, Node
-from pywr.nodes import Domain, PiecewiseLink, Storage
-
-from pywr.parameters import (
-    pop_kwarg_parameter,
-    load_parameter,
-    load_parameter_values,
-    FlowDelayParameter,
-)
-
-
 
 
 
 
 class InstreamFlowRequirement(Node):
 
-    __parameter_attributes__ = ("costs", "min_flows")
+    __parameter_attributes__ = ("costs", "max_flows")
 
 
     def __init__(self, model,nsteps, *args, **kwargs):
@@ -281,8 +273,10 @@ class InstreamFlowRequirement(Node):
         name = kwargs.pop("name")
                 
         #costs = kwargs.pop("costs", None)
-        costs = kwargs.pop('costs', [0.0, 0.0, 0.0])
-        max_flows = kwargs.pop('max_flows', [0.0, 0.0, 0.0])
+        costs = kwargs.pop('costs', None)
+        print("--------costs--------")
+        print(costs)
+        max_flows = kwargs.pop('max_flows', None)
 
         self.min_flows = kwargs.pop("min_flows", None)
         self.min_flow_cost = kwargs.pop('min_flow_cost', None)         
