@@ -273,7 +273,7 @@ from pywr.parameters import (
 
 class InstreamFlowRequirement(Node):
 
-    __parameter_attributes__ = ("costs", "min_flows", "max_flows)
+    __parameter_attributes__ = ("costs", "min_flows", "max_flows")
 
 
     def __init__(self, model,nsteps, *args, **kwargs):
