@@ -124,7 +124,8 @@ class Millerton_Lake_Flood_Release_Requirement(BaseParameter):
 
             # 3.7. Finally, compute the supplemental release
             # Note that the goal is to spread the release out over time
-            storage_difference_mcm = max(conditional_space_required_mcm - total_space_available_mcm, 0.0)
+            #storage_difference_mcm = max(conditional_space_required_mcm - total_space_available_mcm, 0.0)
+            storage_difference_mcm = np.maximum(conditional_space_required_mcm - total_space_available_mcm, 0.0)
 
             # if storage_difference_mcm > 0.0:
             #     print('{}: conditional; release: {} taf'.format(timestep.datetime, storage_difference_mcm / 1.2335))
