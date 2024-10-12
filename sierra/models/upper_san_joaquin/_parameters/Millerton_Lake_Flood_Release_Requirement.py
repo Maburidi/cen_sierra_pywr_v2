@@ -147,7 +147,9 @@ class Millerton_Lake_Flood_Release_Requirement(BaseParameter):
             # 3.8. Calculate total release
             # Note that this differs from the example in the USACE manual, since we are only calculating instream
             # release here. In the manual, "total release" is instream release + ag. release
-            release_mcm = max(release_mcm, supplemental_release_mcm)
+            #release_mcm = max(release_mcm, supplemental_release_mcm)
+            release_mcm = np.maximum(release_mcm, supplemental_release_mcm)
+
 
         # This is our overall target release, without accounting for max downstream releases
         release_mcm = float(max(release_mcm, 0.0))
