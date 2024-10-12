@@ -152,7 +152,9 @@ class Millerton_Lake_Flood_Release_Requirement(BaseParameter):
 
 
         # This is our overall target release, without accounting for max downstream releases
-        release_mcm = float(max(release_mcm, 0.0))
+        #release_mcm = float(max(release_mcm, 0.0))
+        release_mcm = float(np.maximum(release_mcm, 0.0))
+
 
         # Assume Madera Canal can absorb some flood control capacity
         # Note that we cannot calculate Madera demand from the demand node/parameter, since that node depends on this.
